@@ -83,10 +83,6 @@ install_ubuntu() {
     # add-apt-repository may not be available in Ubuntu server out of the box
     apt install -y software-properties-common
 
-    if [[ "$container" != "docker" ]]; then
-        apt install -y "linux-headers-$(uname -r)"
-    fi
-
     # myst
     add-apt-repository -y "$PPA"
     apt update
@@ -102,8 +98,6 @@ install_debian() {
         apt update
         if [[ "$DISTRO" == "raspbian" ]]; then
             apt install -y raspberrypi-kernel-headers
-        else
-            apt install -y "linux-headers-$(uname -r)"
         fi
     fi
 
